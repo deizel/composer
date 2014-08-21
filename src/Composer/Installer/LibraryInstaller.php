@@ -309,7 +309,7 @@ class LibraryInstaller implements InstallerInterface
         $proxyCode = <<<PROXY
 #!/usr/bin/env sh
 
-dir=$(d=$(dirname "$0"); cd "\$d"; cd $binDir && pwd)
+dir=$(d=\${0%[/\\\\]*}; cd "\$d"; cd $binDir && pwd)
 
 # see if we are running in cygwin by checking for cygpath program
 if command -v 'cygpath' >/dev/null 2>&1; then
